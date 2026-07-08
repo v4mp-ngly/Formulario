@@ -447,47 +447,50 @@ async function guardarEnSupabase(datos, paso){
   
   try {
     if(paso === 1){
-      // Guardar en plaza_andalucia_registros (tabla original)
-      const { error: error1 } = await state.supabase
+      console.log('📝 Guardando paso 1...');
+      
+      const { error: err1 } = await state.supabase
         .from('plaza_andalucia_registros')
         .upsert({cedula:datos.cedula, nombre:datos.nombre, empresa:datos.empresa, whatsapp:datos.whatsapp, firma_paso1:datos.firma, id_asistencia:datos.id, fecha_asistencia:new Date().toISOString(), estado:'asistencia', updated_at:new Date().toISOString()}, {onConflict:'cedula'});
       
-      // TAMBIÉN guardar en asistencias_virtuales (para el panel)
-      const { error: error2 } = await state.supabase
+      const { error: err2 } = await state.supabase
         .from('asistencias_virtuales')
         .upsert({cedula:datos.cedula, nombre:datos.nombre, empresa:datos.empresa, whatsapp:datos.whatsapp, firma:datos.firma, estado_asistencia:'presente', hora_ingreso:new Date().toISOString()}, {onConflict:'cedula'});
       
-      console.log('✅ Guardado en plaza_andalucia_registros y asistencias_virtuales');
-      return !error1 && !error2;
+      console.log('✅ Paso 1 guardado en ambas tablas');
+      return !err1 && !err2;
       
     } else if(paso === 2){
-      // Actualizar empresa en ambas tablas
-      const { error: error1 } = await state.supabase
+      console.log('📝 Guardando paso 2...');
+      
+      const { error: err1 } = await state.supabase
         .from('plaza_andalucia_registros')
         .update({correo:datos.correo, sucursal:datos.sucursal, consentimiento_aceptado:true, fecha_consentimiento:new Date().toISOString(), estado:'consentimiento', updated_at:new Date().toISOString()})
         .eq('cedula', state.cedulaActual);
-        
-      const { error: error2 } = await state.supabase
+      
+      const { error: err2 } = await state.supabase
         .from('asistencias_virtuales')
         .update({empresa:datos.sucursal, updated_at:new Date().toISOString()})
         .eq('cedula', state.cedulaActual);
-        
-      console.log('✅ Paso 2 actualizado');
-      return !error1 && !error2;
+      
+      console.log('✅ Paso 2 guardado en ambas tablas');
+      return !err1 && !err2;
       
     } else if(paso === 3){
-      const { error: error1 } = await state.supabase
+      console.log('📝 Guardando paso 3...');
+      
+      const { error: err1 } = await state.supabase
         .from('plaza_andalucia_registros')
         .update({estado:'completado', updated_at:new Date().toISOString()})
         .eq('cedula', state.cedulaActual);
-        
-      const { error: error2 } = await state.supabase
+      
+      const { error: err2 } = await state.supabase
         .from('asistencias_virtuales')
         .update({updated_at:new Date().toISOString()})
         .eq('cedula', state.cedulaActual);
-        
-      console.log('✅ Paso 3 completado');
-      return !error1 && !error2;
+      
+      console.log('✅ Paso 3 guardado en ambas tablas');
+      return !err1 && !err2;
     }
   } catch(err){
     console.error('Error Supabase:', err);
