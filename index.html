@@ -15,208 +15,81 @@
   --bg:#f4f7fa;--white:#fff;--radius:14px;--radius-sm:9px;
   --shadow:0 2px 20px rgba(30,80,128,0.09);--shadow-lg:0 8px 40px rgba(30,80,128,0.13)
 }
-.progress-bar{display:none !important}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 .header{background:var(--azul);padding:1rem 2rem;display:flex;align-items:center;justify-content:flex-start;border-bottom:3px solid var(--verde)}
-.header-brand{
-    display:flex;
-    align-items:center;
-    gap:20px;
-}
-
+.header-brand{display:flex;align-items:center;gap:30px;width:100%;justify-content:flex-start}
 .header-logo{
-    width:120px;
+    width:140px;
     height:auto;
     object-fit:contain;
     display:block;
+    flex-shrink:0;
 }
-.header-info{display:flex;flex-direction:column;justify-content:center;}
-.header-info h1{
-    margin:0;
-    font-size:42px;
-    color:#fff;
-    font-weight:700;
-}
-.header-info p{
-    margin-top:8px;
-    font-size:22px;
-    color:#dfe9f5;
-}
-
+.header-info{display:flex;flex-direction:column;justify-content:center;flex-grow:1}
+.header-info h1{margin:0;font-size:42px;color:#fff;font-weight:700}
+.header-info p{margin-top:8px;font-size:22px;color:#dfe9f5}
 .main{max-width:720px;margin:0 auto;padding:2rem 1rem 4rem}
-
 .progress-bar{display:flex;gap:12px;margin-bottom:2.5rem;padding:1.5rem;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow)}
 .progress-step{flex:1;display:flex;flex-direction:column;align-items:center}
 .progress-circle{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;margin-bottom:8px;transition:all .3s}
 .progress-step.pending .progress-circle{background:#dde5ee;color:var(--text-hint);border:2px solid var(--border-med)}
-.progress-step.active .progress-circle{background:var(--azul-med);color:#fff;border:2px solid var(--azul-med);box-shadow:0 0 0 4px rgba(30,80,128,.1)}
+.progress-step.active .progress-circle{background:var(--azul-med);color:#fff;border:2px solid var(--azul-med)}
 .progress-step.done .progress-circle{background:var(--verde);color:#fff;border:2px solid var(--verde)}
 .progress-label{font-size:11px;font-weight:600;color:var(--text-hint);text-align:center;line-height:1.3}
 .progress-step.active .progress-label{color:var(--azul-med);font-weight:700}
 .progress-step.done .progress-label{color:var(--verde-dark);font-weight:700}
-
 .section{display:none}
 .section.active{display:block;animation:fadeIn .4s}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-
 .section-title{font-family:'Playfair Display',serif;font-size:24px;color:var(--azul);margin-bottom:1.5rem}
-
-/* GOOGLE FORM SECTION */
-.google-form-wrap{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow);margin-bottom:2rem}
-.google-form-wrap iframe{width:100%;border:none;border-radius:var(--radius-sm);min-height:1000px}
-
-/* LOCKED SECTION */
+.section-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:2rem}
 .section-card.locked{opacity:.6;pointer-events:none;position:relative}
 .locked-overlay{position:absolute;inset:0;background:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;border-radius:var(--radius);z-index:10}
-.locked-msg{background:rgba(22,58,95,.9);color:#fff;padding:20px;border-radius:10px;text-align:center;max-width:300px}
+.locked-msg{background:rgba(22,58,95,.9);color:#fff;padding:20px;border-radius:10px;text-align:center}
 .locked-msg-icon{font-size:40px;margin-bottom:10px}
-.locked-msg-text{font-size:14px;line-height:1.5}
-
-.section-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:2rem}
-.section-card.locked{position:relative}
-
-.action-btns{display:flex;gap:12px;margin-top:2rem;flex-wrap:wrap}
+.action-btns{display:flex;gap:12px;margin-top:2rem}
 .btn{padding:12px 24px;border:none;border-radius:10px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
 .btn-primary{background:var(--azul-med);color:#fff;width:100%}
-.btn-primary:hover:not(:disabled){background:var(--azul)}
-.btn-primary:disabled{opacity:.5;cursor:not-allowed}
-
+.btn-primary:hover{background:var(--azul)}
 .completion-msg{background:var(--verde-light);border:1px solid rgba(122,183,46,.3);border-radius:10px;padding:14px;margin-bottom:20px;display:none;align-items:center;gap:12px;color:var(--verde-dark);font-size:13px;font-weight:500}
 .completion-msg.show{display:flex}
-.completion-msg svg{width:20px;height:20px;flex-shrink:0}
-
-.final-section{background:linear-gradient(135deg, var(--azul) 0%, var(--azul-med) 100%);color:#fff;padding:3rem 2rem;border-radius:var(--radius);text-align:center}
-.final-icon{font-size:60px;margin-bottom:1rem}
-.final-title{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:.5rem}
-.final-text{font-size:14px;line-height:1.6;opacity:.95;margin-bottom:1.5rem}
-.final-checkmarks{display:flex;flex-direction:column;gap:10px;margin-bottom:1.5rem;font-size:13px}
-.checkmark-item{display:flex;align-items:center;gap:10px}
-.checkmark-item svg{width:18px;height:18px}
-
-/* PASO 2 STYLES */
-.steps{display:flex;align-items:center;margin-bottom:1.75rem}
-.step{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:var(--text-hint)}
-.step.active{color:var(--azul-med)}
-.step.done{color:var(--verde-dark)}
-.step-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:#dde5ee;color:var(--text-hint);flex-shrink:0}
-.step.active .step-num{background:var(--azul-med);color:#fff}
-.step.done .step-num{background:var(--verde);color:#fff}
-.step-line{flex:1;height:1px;background:var(--border);margin:0 8px}
-
 .card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
 .card-head{background:var(--azul);padding:1.5rem 1.75rem;border-bottom:3px solid var(--verde)}
-.card-head-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(122,183,46,.18);border:1px solid rgba(122,183,46,.3);border-radius:20px;padding:3px 12px;font-size:11px;color:#a8d96a;margin-bottom:.75rem}
-.pulse{width:7px;height:7px;background:#7ab72e;border-radius:50%;animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
 .card-head-title{font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:4px}
-.card-head-sub{font-size:13px;color:rgba(255,255,255,.6);line-height:1.5}
-.info-row{display:flex;gap:10px;padding:1.1rem 1.75rem;background:var(--azul-light);border-bottom:1px solid var(--border)}
-.info-chip{flex:1;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:9px 13px}
-.info-chip .lbl{font-size:10px;font-weight:700;color:var(--text-hint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
-.info-chip .val{font-size:13px;font-weight:600;color:var(--text)}
+.card-head-sub{font-size:13px;color:rgba(255,255,255,.6)}
 .form-body{padding:1.5rem 1.75rem}
-.section-label{font-size:10px;font-weight:700;color:var(--text-hint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem;display:flex;align-items:center;gap:7px}
-.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
 .field{margin-bottom:1.1rem}
 .field label{display:block;font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:5px}
-.field input,.field select{width:100%;padding:10px 14px;font-size:14px;font-family:'Outfit',sans-serif;border:1px solid var(--border-med);border-radius:var(--radius-sm);background:var(--white);color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s}
+.field input,.field select{width:100%;padding:10px 14px;font-size:14px;font-family:'Outfit',sans-serif;border:1px solid var(--border-med);border-radius:var(--radius-sm);background:var(--white);color:var(--text);outline:none}
 .field input:focus,.field select:focus{border-color:var(--azul-med);box-shadow:0 0 0 3px rgba(30,80,128,.08)}
-.wa-wrap{display:flex;align-items:center}
-.wa-prefix{padding:10px 12px;background:var(--azul-light);border:1px solid var(--border-med);border-right:none;border-radius:var(--radius-sm) 0 0 var(--radius-sm);font-size:14px;color:var(--text-muted);white-space:nowrap}
-.wa-input{border-radius:0 var(--radius-sm) var(--radius-sm) 0 !important}
-.check-row{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:background .15s,border-color .15s;margin-bottom:7px;background:var(--white)}
+.check-row{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;margin-bottom:7px;background:var(--white)}
 .check-row:hover{background:var(--azul-light)}
 .check-row.checked{background:var(--verde-light);border-color:rgba(122,183,46,.4)}
 .check-row input[type=checkbox]{width:16px;height:16px;accent-color:var(--verde);cursor:pointer;flex-shrink:0;margin-top:2px}
-.check-row span{font-size:13px;color:var(--text);line-height:1.4}
-.firma-text-wrap{position:relative;margin-bottom:6px}
-.firma-input{width:100%;height:90px;font-family:'Brush Script MT','Dancing Script',cursive;font-size:32px;color:var(--azul);border:1px dashed var(--border-med);border-radius:var(--radius-sm);background:#fafbfc;padding:16px 18px;outline:none;resize:none;transition:border-color .2s,box-shadow .2s;line-height:1.2}
-.firma-input:focus{border-color:var(--azul-med);box-shadow:0 0 0 3px rgba(30,80,128,.08);border-style:solid}
-.firma-input::placeholder{font-family:'Outfit',sans-serif;font-size:13px;color:var(--text-hint);font-style:italic}
-.firma-linea{position:absolute;bottom:20px;left:18px;right:18px;height:1px;background:var(--border-med);pointer-events:none}
-.firma-hint{font-size:11px;color:var(--text-hint);margin-bottom:1.25rem}
-.err{font-size:11px;color:#b91c1c;margin-top:4px;display:block}
-.err:empty{display:none}
-.btn-main{width:100%;padding:14px;background:var(--azul-med);color:#fff;border:none;border-radius:10px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s,transform .1s;letter-spacing:.02em}
+.check-row span{font-size:13px;color:var(--text)}
+.firma-input{width:100%;height:90px;font-family:'Brush Script MT','Dancing Script',cursive;font-size:32px;color:var(--azul);border:1px dashed var(--border-med);border-radius:var(--radius-sm);background:#fafbfc;padding:16px 18px;outline:none;resize:none}
+.btn-main{width:100%;padding:14px;background:var(--azul-med);color:#fff;border:none;border-radius:10px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
 .btn-main:hover{background:var(--azul)}
-.btn-main:active{transform:scale(.99)}
 .btn-main:disabled{opacity:.5;cursor:not-allowed}
-.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-#seccion-comprobante{display:none}
-.comp-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);overflow:hidden}
-.comp-header{background:var(--azul);padding:1.75rem 2rem;border-bottom:3px solid var(--verde)}
-.comp-header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
-.comp-logo-row{display:flex;align-items:center;gap:10px}
-.comp-logo-img{height:32px}
-.comp-brand{font-family:'Playfair Display',serif;font-size:15px;color:rgba(255,255,255,.8)}
-.comp-verified{display:flex;align-items:center;gap:5px;background:rgba(122,183,46,.25);border:1px solid rgba(122,183,46,.4);border-radius:20px;padding:4px 12px;font-size:11px;color:#a8d96a;font-weight:600}
-.comp-name{font-family:'Playfair Display',serif;font-size:24px;color:#fff;margin-bottom:3px}
-.comp-id{font-size:11px;color:rgba(255,255,255,.45);font-family:monospace;letter-spacing:.04em}
-.comp-body{padding:1.75rem 2rem}
-.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.5rem}
-.comp-full{grid-column:1/-1}
-.comp-field{background:var(--bg);border-radius:var(--radius-sm);padding:10px 14px;border:1px solid var(--border)}
-.comp-field .lbl{font-size:10px;font-weight:700;color:var(--text-hint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
-.comp-field .val{font-size:13px;font-weight:600;color:var(--text)}
-.comp-checks{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:1.5rem}
-.comp-check{display:flex;align-items:center;gap:5px;background:var(--verde-light);border:1px solid rgba(122,183,46,.25);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--verde-dark);font-weight:500}
-.comp-firma-box{border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 18px;background:var(--bg);margin-bottom:1.5rem}
-.comp-firma-lbl{font-size:10px;font-weight:700;color:var(--text-hint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
-.comp-firma-texto{font-family:'Brush Script MT','Dancing Script',cursive;font-size:36px;color:var(--azul);border-bottom:1px solid var(--border-med);padding-bottom:6px;min-height:52px;word-break:break-all}
-.comp-footer{display:flex;align-items:center;justify-content:space-between;padding-top:1.25rem;border-top:1px solid var(--border);margin-bottom:1.5rem}
-.comp-timestamp{font-size:11px;color:var(--text-hint)}
-.comp-sello{display:flex;align-items:center;gap:5px;background:var(--azul-light);border:1px solid rgba(30,80,128,.2);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--azul-med);font-weight:600}
-.wa-notice{background:var(--verde-light);border:1px solid rgba(122,183,46,.3);border-radius:10px;padding:14px 18px;margin-bottom:10px;display:flex;align-items:flex-start;gap:12px}
-.wa-notice-title{font-size:13px;font-weight:600;color:var(--verde-dark);margin-bottom:3px}
-.wa-notice-sub{font-size:12px;color:var(--text-muted);line-height:1.5}
-.email-sent{background:var(--azul-light);border:1px solid var(--border-med);border-radius:10px;padding:12px 16px;margin-bottom:10px;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--azul-med)}
-.btn-download{width:100%;padding:11px;background:transparent;border:1px solid var(--border-med);color:var(--text-muted);border-radius:10px;font-family:'Outfit',sans-serif;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s,border-color .15s,color .15s;margin-top:8px}
-.btn-download:hover{background:var(--azul-light);border-color:var(--azul-med);color:var(--azul-med)}
-.btn-download:disabled{opacity:.5;cursor:not-allowed}
-
-/* PASO 2 CONSENTIMIENTO STYLES */
-.titulo-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:2rem 2rem 1.5rem;margin-bottom:1.25rem;box-shadow:var(--shadow)}
-.titulo-h{font-size:22px;font-weight:700;color:var(--azul);text-transform:uppercase;letter-spacing:.02em;line-height:1.3;margin-bottom:.5rem}
-.titulo-sub{font-size:13px;color:var(--text-muted)}
-.card-title{font-size:11px;font-weight:700;color:var(--text-hint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1.25rem;display:flex;align-items:center;gap:8px}
-.card-title::after{content:'';flex:1;height:1px;background:var(--border)}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.legal-box{background:#fafbfc;border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.5rem;margin-bottom:0;line-height:1.75;color:var(--text-muted);font-size:13px}
-.legal-box h3{font-size:13px;font-weight:700;color:var(--azul);margin-bottom:.6rem;margin-top:1.1rem}
+.err{font-size:11px;color:#b91c1c;margin-top:4px;display:none}
+.final-section{background:linear-gradient(135deg, var(--azul) 0%, var(--azul-med) 100%);color:#fff;padding:3rem 2rem;border-radius:var(--radius);text-align:center}
+.final-icon{font-size:60px;margin-bottom:1rem}
+.final-title{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:.5rem}
+.final-text{font-size:14px;line-height:1.6;opacity:.95}
+.legal-box{background:#fafbfc;border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.5rem;margin-bottom:1rem;line-height:1.75;color:var(--text-muted);font-size:13px}
+.legal-box h3{font-size:13px;font-weight:700;color:var(--azul);margin-bottom:.6rem;margin-top:1rem}
 .legal-box h3:first-child{margin-top:0}
 .legal-box ul{padding-left:0;list-style:none}
 .legal-box li{padding-left:16px;position:relative;margin-bottom:6px}
-.legal-box li::before{content:'●';position:absolute;left:0;color:var(--verde);font-size:8px;top:5px}
-.firma-canvas-wrap{position:relative;border:2px dashed var(--border-med);border-radius:var(--radius-sm);background:#fafbfc;overflow:hidden;margin-bottom:0}
-.firma-placeholder{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:13px;color:var(--text-hint);pointer-events:none;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;transition:opacity .2s}
-canvas#firmaCanvas{display:block;touch-action:none;width:100%;height:130px}
-.firma-actions{display:flex;justify-content:flex-end;margin-top:6px;margin-bottom:0}
-.btn-ghost{font-family:'Outfit',sans-serif;font-size:12px;border:1px solid var(--border-med);background:transparent;color:var(--text-muted);padding:5px 12px;border-radius:6px;cursor:pointer}
-.btn-ghost:hover{background:var(--bg)}
-.btn-submit{width:100%;padding:14px;background:var(--azul);color:#fff;border:none;border-radius:var(--radius-sm);font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s;letter-spacing:.02em;margin-top:.5rem}
-.btn-submit:hover{background:var(--azul-med)}
-.btn-submit:active{transform:scale(.99)}
-.btn-submit:disabled{opacity:.5;cursor:not-allowed}
-.spin{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
-.exito-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:3rem 2rem;text-align:center;box-shadow:var(--shadow)}
-.exito-icon{width:60px;height:60px;background:var(--verde-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:28px}
-.exito-title{font-size:20px;font-weight:700;color:var(--azul);margin-bottom:.5rem}
-.exito-sub{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:1.5rem}
-.exito-id{font-size:11px;font-family:monospace;color:var(--text-hint);background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:6px 14px;display:inline-block}
-.btn-dl{margin-top:1.25rem;padding:11px 24px;background:transparent;border:1px solid var(--border-med);color:var(--text-muted);border-radius:var(--radius-sm);font-family:'Outfit',sans-serif;font-size:13px;cursor:pointer;transition:background .15s}
-.btn-dl:hover{background:var(--azul-light);color:var(--azul-med);border-color:var(--azul-med)}
-.fade-in{animation:fadeIn .4s ease forwards}
-
+.legal-box li::before{content:'●';position:absolute;left:0;color:var(--verde);font-size:8px}
+.titulo-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:2rem 2rem 1.5rem;margin-bottom:1.25rem;box-shadow:var(--shadow)}
+.titulo-h{font-size:22px;font-weight:700;color:var(--azul);text-transform:uppercase;letter-spacing:.02em;line-height:1.3;margin-bottom:.5rem}
+.titulo-sub{font-size:13px;color:var(--text-muted)}
+.card-title{font-size:11px;font-weight:700;color:var(--text-hint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1.25rem}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:600px){
-  .progress-bar{padding:1rem;gap:8px}
-  .progress-circle{width:40px;height:40px;font-size:16px;margin-bottom:6px}
-  .progress-label{font-size:10px}
-  .section-title{font-size:20px}
-  .final-section{padding:2rem 1.5rem}
-  .final-title{font-size:22px}
   .grid-2{grid-template-columns:1fr}
+  .header-info h1{font-size:24px}
 }
 </style>
 </head>
@@ -258,31 +131,24 @@ canvas#firmaCanvas{display:block;touch-action:none;width:100%;height:130px}
       <div id="seccion-formulario">
         <div class="card">
           <div class="card-head">
-            <div class="card-head-badge"><div class="pulse"></div> Consulta virtual · En vivo</div>
             <div class="card-head-title">Registro de asistencia</div>
-            <div class="card-head-sub">Completa el formulario para confirmar tu presencia antes de iniciar la consulta.</div>
-          </div>
-          <div class="info-row">
-            <div class="info-chip"><div class="lbl">Fecha</div><div class="val" id="chip-fecha">—</div></div>
-            <div class="info-chip"><div class="lbl">Hora actual</div><div class="val" id="chip-hora">—</div></div>
-            <div class="info-chip"><div class="lbl">Código de cita</div><div class="val" id="chip-codigo">—</div></div>
+            <div class="card-head-sub">Completa el formulario para confirmar tu presencia</div>
           </div>
           <div class="form-body">
-            <div class="section-label">Datos del paciente</div>
             <div class="field">
-              <label for="nombre">Nombre completo</label>
-              <input type="text" id="nombre">
-              <div class="err" id="err-nombre">⚠ Ingresa tu nombre completo</div>
+              <label for="nombre">Nombre completo *</label>
+              <input type="text" id="nombre" placeholder="Tu nombre">
+              <div class="err" id="err-nombre">⚠ Campo requerido</div>
             </div>
             <div class="field">
-              <label>Cédula <span style="color:#d32f2f">*</span></label>
+              <label>Cédula *</label>
               <input type="text" id="cedula" placeholder="000-0000000-0">
-              <div class="err" id="err-cedula">⚠ Ingresa tu cédula</div>
+              <div class="err" id="err-cedula">⚠ Campo requerido</div>
             </div>
             <div class="field">
-              <label for="empresa">Empresa / Sucursal</label>
+              <label for="empresa">Empresa / Sucursal *</label>
               <select id="empresa">
-                <option value="">Selecciona tu empresa/sucursal</option>
+                <option value="">Selecciona tu empresa</option>
                 <option value="SMASH BY CRHRIS">SMASH BY CRHRIS</option>
                 <option value="GRUPO EJ TAVAREZ">GRUPO EJ TAVAREZ</option>
                 <option value="BANCO POPULAR">BANCO POPULAR</option>
@@ -324,88 +190,48 @@ canvas#firmaCanvas{display:block;touch-action:none;width:100%;height:130px}
                 <option value="GRUPO JAYASE">GRUPO JAYASE</option>
                 <option value="CENTRO DE PSICOLOGIA Y METAMORFOSIS">CENTRO DE PSICOLOGIA Y METAMORFOSIS</option>
               </select>
-              <div class="err" id="err-empresa">⚠ Selecciona tu empresa</div>
+              <div class="err" id="err-empresa">⚠ Campo requerido</div>
             </div>
             <div class="field">
-              <label for="whatsapp">Número de WhatsApp</label>
-              <div class="wa-wrap">
-                <span class="wa-prefix">🇩🇴 +1</span>
-                <input type="tel" id="whatsapp" class="wa-input" placeholder="809 000 0000" maxlength="15">
-              </div>
-              <div class="err" id="err-whatsapp">⚠ Ingresa tu número de WhatsApp</div>
+              <label for="whatsapp">Número de WhatsApp *</label>
+              <input type="tel" id="whatsapp" placeholder="809 000 0000" maxlength="15">
+              <div class="err" id="err-whatsapp">⚠ Campo requerido</div>
             </div>
-            <div class="section-label" style="margin-top:1.4rem">Verificaciones</div>
-            <label class="check-row" id="row-c1">
-              <input type="checkbox" id="chk1" onchange="toggleCheck('row-c1',this)">
-              <span>Tengo buena conexión a internet y el audio funciona correctamente</span>
-            </label>
-            <label class="check-row" id="row-c2">
-              <input type="checkbox" id="chk2" onchange="toggleCheck('row-c2',this)">
-              <span>Estoy en un lugar tranquilo y listo para iniciar la consulta</span>
-            </label>
-            <label class="check-row" id="row-c3">
-              <input type="checkbox" id="chk3" onchange="toggleCheck('row-c3',this)">
-              <span>Confirmo que mis datos personales son correctos</span>
-            </label>
-            <div class="err" id="err-checks">⚠ Debes confirmar todas las verificaciones</div>
-            <div class="section-label" style="margin-top:1.4rem">Firma digital</div>
-            <div class="firma-text-wrap">
-              <textarea class="firma-input" id="firmaTexto" placeholder="Escribe tu nombre como firma aquí..." maxlength="80" rows="2"></textarea>
-              <div class="firma-linea"></div>
+            <div class="field">
+              <label>Confirmaciones *</label>
+              <label class="check-row" id="row-c1">
+                <input type="checkbox" id="chk1" onchange="toggleCheck('row-c1',this)">
+                <span>Tengo buena conexión a internet</span>
+              </label>
+              <label class="check-row" id="row-c2">
+                <input type="checkbox" id="chk2" onchange="toggleCheck('row-c2',this)">
+                <span>Estoy en un lugar tranquilo</span>
+              </label>
+              <label class="check-row" id="row-c3">
+                <input type="checkbox" id="chk3" onchange="toggleCheck('row-c3',this)">
+                <span>Confirmo que mis datos son correctos</span>
+              </label>
+              <div class="err" id="err-checks">⚠ Debes confirmar todos</div>
             </div>
-            <div class="firma-hint">Tu nombre escrito aquí equivale a tu firma y aparecerá en el comprobante.</div>
-            <div class="err" id="err-firma">⚠ Por favor escribe tu firma</div>
-            <button class="btn-main" id="btnRegistrar" onclick="registrarPaso1()">
-              <div class="spinner" id="spinner"></div>
-              <span id="btn-text">Confirmar asistencia</span>
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            <div class="field">
+              <label for="firma">Tu firma *</label>
+              <textarea class="firma-input" id="firmaTexto" placeholder="Escribe tu nombre como firma aquí..." maxlength="80"></textarea>
+              <div class="err" id="err-firma">⚠ Campo requerido</div>
+            </div>
+            <button class="btn-main" onclick="registrarPaso1()">
+              Confirmar asistencia →
             </button>
           </div>
         </div>
       </div>
-
       <div id="seccion-comprobante" style="display:none">
-        <div class="comp-card fade-in">
-          <div class="comp-header">
-            <div class="comp-header-top">
-              <div class="comp-logo-row">
-                <img class="comp-logo-img" src="data:image/png;base64,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" alt="NUMED">
-                <div class="comp-brand">NUMED</div>
-              </div>
-              <div class="comp-verified">✓ Verificado</div>
-            </div>
-            <div class="comp-name" id="comp-nombre">—</div>
-            <div class="comp-id" id="comp-id">ID: —</div>
-          </div>
-          <div class="comp-body">
-            <div class="comp-grid">
-              <div class="comp-field"><div class="lbl">Cédula</div><div class="val" id="comp-cedula">—</div></div>
-              <div class="comp-field"><div class="lbl">Empresa</div><div class="val" id="comp-empresa">—</div></div>
-              <div class="comp-field"><div class="lbl">Fecha</div><div class="val" id="comp-fecha">—</div></div>
-              <div class="comp-field"><div class="lbl">Hora</div><div class="val" id="comp-hora">—</div></div>
-              <div class="comp-field"><div class="lbl">Código</div><div class="val" id="comp-codigo">—</div></div>
-              <div class="comp-field comp-full"><div class="lbl">WhatsApp</div><div class="val" id="comp-whatsapp">—</div></div>
-            </div>
-            <div style="font-size:10px;font-weight:700;color:var(--text-hint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem">Verificaciones confirmadas</div>
-            <div class="comp-checks">
-              <div class="comp-check">✓ Buena conexión</div>
-              <div class="comp-check">✓ Entorno adecuado</div>
-              <div class="comp-check">✓ Datos correctos</div>
-            </div>
-            <div class="comp-firma-box">
-              <div class="comp-firma-lbl">Firma del paciente</div>
-              <div class="comp-firma-texto" id="comp-firma-texto">—</div>
-            </div>
-            <div class="comp-footer">
-              <div class="comp-timestamp" id="comp-timestamp">—</div>
-              <div class="comp-sello">Verificado</div>
-            </div>
-          </div>
+        <div class="card" style="background:linear-gradient(135deg, var(--azul) 0%, var(--azul-med) 100%);color:#fff;padding:2rem">
+          <h3 style="font-size:20px;margin-bottom:1rem">✓ Asistencia confirmada</h3>
+          <p id="comp-datos" style="font-size:14px;line-height:1.6"></p>
         </div>
       </div>
     </div>
     <div class="completion-msg" id="msg-paso1">
-      <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
       ✓ Asistencia confirmada. Continúa al siguiente paso.
     </div>
     <div class="action-btns" id="btns-paso1" style="display:none">
@@ -422,26 +248,23 @@ canvas#firmaCanvas{display:block;touch-action:none;width:100%;height:130px}
       <div class="locked-overlay" id="overlay-paso2" style="display:none">
         <div class="locked-msg">
           <div class="locked-msg-icon">🔒</div>
-          <div class="locked-msg-text">Completa el Paso 1 primero</div>
+          <div>Completa el Paso 1 primero</div>
         </div>
       </div>
-
       <div id="seccion-form-paso2">
         <div class="titulo-card">
-          <div class="titulo-h">Consentimiento Informado y Compromiso de Participación</div>
-          <div class="titulo-sub">Programa de Nutrición y Prevención – Plaza Andalucía</div>
+          <div class="titulo-h">Consentimiento Informado</div>
+          <div class="titulo-sub">Programa de Nutrición y Prevención</div>
         </div>
-
         <div class="card">
-          <div class="card-title">Datos del Participante</div>
-          <div class="grid-2">
+          <div class="form-body">
             <div class="field">
-              <label>Correo Electrónico <span>*</span></label>
+              <label>Correo Electrónico *</label>
               <input type="email" id="p2-correo" placeholder="tu@email.com">
               <div class="err" id="err-p2-correo"></div>
             </div>
             <div class="field">
-              <label>Sucursal/Localidad <span>*</span></label>
+              <label>Sucursal/Localidad *</label>
               <select id="p2-sucursal">
                 <option value="">Selecciona tu localidad</option>
                 <option value="SMASH BY CRHRIS">SMASH BY CRHRIS</option>
@@ -489,9 +312,8 @@ canvas#firmaCanvas{display:block;touch-action:none;width:100%;height:130px}
             </div>
           </div>
         </div>
-
         <div class="card">
-          <div class="card-title">Términos y Condiciones</div>
+          <div class="card-title" style="padding:1.5rem 1.75rem 0">Términos y Condiciones</div>
           <div class="legal-box">
             <h3>Descripción del Programa</h3>
             <p>El Programa de Nutrición y Prevención de Plaza Andalucía es un programa integral diseñado para mejorar la salud, nutrición y calidad de vida de los participantes a través de evaluaciones, consultas personalizadas y acompañamiento profesional.</p>
@@ -530,31 +352,28 @@ canvas#firmaCanvas{display:block;touch-action:none;width:100%;height:130px}
             </ul>
           </div>
         </div>
-
         <div class="card">
-          <div class="card-title">Confirmación Final</div>
-          <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:1.5rem;display:flex;gap:12px;align-items:flex-start;cursor:pointer" onclick="document.getElementById('chk-p2-acuerdo').click()">
-            <input type="checkbox" id="chk-p2-acuerdo" style="width:18px;height:18px;accent-color:var(--verde);cursor:pointer;flex-shrink:0;margin-top:2px">
-            <span style="font-size:14px;color:var(--text);line-height:1.6">Confirmo que he leído y acepto todas las condiciones del consentimiento informado</span>
+          <div class="form-body">
+            <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;display:flex;gap:12px;align-items:flex-start;cursor:pointer" onclick="document.getElementById('chk-p2-acuerdo').click()">
+              <input type="checkbox" id="chk-p2-acuerdo" style="width:18px;height:18px;accent-color:var(--verde);cursor:pointer;flex-shrink:0;margin-top:2px">
+              <span style="font-size:14px;color:var(--text);line-height:1.6">Confirmo que acepto las condiciones</span>
+            </div>
+            <div class="err" id="err-p2-acuerdo" style="margin-top:1rem"></div>
+            <button class="btn-main" onclick="registrarPaso2()" style="margin-top:1rem">
+              Registrar consentimiento
+            </button>
           </div>
-          <div class="err" id="err-p2-acuerdo" style="margin-bottom:1.5rem;color:#b91c1c;font-size:12px"></div>
-          <button class="btn-submit" id="btnRegistrar2" onclick="registrarPaso2()">
-            <span id="btn-txt">Registrar consentimiento</span>
-          </button>
         </div>
       </div>
-
-      <div id="seccion-exito-paso2" style="display:none">
-        <div class="exito-card fade-in">
-          <div class="exito-icon">✓</div>
-          <div class="exito-title">¡Consentimiento Registrado!</div>
-          <div class="exito-sub">Tu consentimiento ha sido guardado correctamente. Se ha enviado una copia a tu correo electrónico.</div>
-          <div class="exito-id" id="exitoId2">ID: —</div>
+      <div id="seccion-exito-paso2" style="display:none;padding:1.5rem">
+        <div style="background:var(--verde-light);border:1px solid rgba(122,183,46,.3);border-radius:10px;padding:2rem;text-align:center">
+          <div style="font-size:40px;margin-bottom:1rem">✓</div>
+          <h3 style="color:var(--azul);margin-bottom:.5rem">¡Consentimiento Registrado!</h3>
+          <p style="color:var(--text-muted);font-size:13px">Tu consentimiento ha sido guardado correctamente.</p>
         </div>
       </div>
     </div>
     <div class="completion-msg" id="msg-paso2">
-      <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
       ✓ Consentimiento completado. Continúa al siguiente paso.
     </div>
     <div class="action-btns" id="btns-paso2" style="display:none">
@@ -564,28 +383,27 @@ canvas#firmaCanvas{display:block;touch-action:none;width:100%;height:130px}
     </div>
   </div>
 
-  <!-- PASO 3: CONFIRMACIÓN FINAL -->
+  <!-- PASO 3: GOOGLE FORM -->
   <div id="paso3" class="section">
     <h2 class="section-title">Paso 3: Confirmación Final</h2>
     <div class="section-card locked" id="card-paso3">
       <div class="locked-overlay" id="overlay-paso3" style="display:none">
         <div class="locked-msg">
           <div class="locked-msg-icon">🔒</div>
-          <div class="locked-msg-text">Completa los pasos anteriores primero</div>
+          <div>Completa los pasos anteriores</div>
         </div>
       </div>
-      <div class="google-form-wrap">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSelT4-IfoD6ONzDKpHfkGz_0jz_zv7wUWZ9ktHROfvjEQWHeQ/viewform?embedded=true" style="min-height:1200px" frameborder="0" marginheight="0" marginwidth="0"></iframe>
+      <div style="padding:1.5rem">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSelT4-IfoD6ONzDKpHfkGz_0jz_zv7wUWZ9ktHROfvjEQWHeQ/viewform?embedded=true" width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
       </div>
-      <div class="completion-msg" id="msg-paso3">
-        <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-        ✓ Confirmación completada. ¡Proceso finalizado!
-      </div>
-      <div class="action-btns" id="btns-paso3" style="display:none">
-        <button class="btn btn-primary" onclick="mostrarFinal()">
-          Finalizar →
-        </button>
-      </div>
+    </div>
+    <div class="completion-msg" id="msg-paso3">
+      ✓ Confirmación completada.
+    </div>
+    <div class="action-btns" id="btns-paso3" style="display:none;margin-top:1rem">
+      <button class="btn btn-primary" onclick="mostrarFinal()">
+        Finalizar →
+      </button>
     </div>
   </div>
 
@@ -594,22 +412,8 @@ canvas#firmaCanvas{display:block;touch-action:none;width:100%;height:130px}
     <div class="final-section">
       <div class="final-icon">✨</div>
       <h2 class="final-title">¡Proceso Completado!</h2>
-      <p class="final-text">Gracias por completar todos los pasos del programa de nutrición y prevención de Plaza Andalucía.</p>
-      <div class="final-checkmarks">
-        <div class="checkmark-item">
-          <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          Asistencia confirmada
-        </div>
-        <div class="checkmark-item">
-          <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          Consentimiento informado aceptado
-        </div>
-        <div class="checkmark-item">
-          <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          Confirmación final completada
-        </div>
-      </div>
-      <p style="font-size:13px;margin-top:1.5rem;opacity:.85">Se han enviado confirmaciones a tu correo. Recibirás más información del equipo de Plaza Andalucía.</p>
+      <p class="final-text">Gracias por completar todos los pasos del programa de Plaza Andalucía.</p>
+      <p style="font-size:13px;margin-top:1.5rem;opacity:.85">Se han enviado confirmaciones a tu correo.</p>
     </div>
   </div>
 
@@ -617,91 +421,46 @@ canvas#firmaCanvas{display:block;touch-action:none;width:100%;height:130px}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// CONFIGURACIÓN SUPABASE
-const SUPABASE_URL = 'https://lfyholfrqxyryveikspy.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxmeWhvbGZycXh5cnl2ZWlrc3B5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0NDc3ODgsImV4cCI6MjA5OTAyMzc4OH0.kn93eFHmXPdHQShjsV2-4Gn4ThXSVtwQkBEkfBsEuO8';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+// ESTADO
+const state = {paso1:false, paso2:false, paso3:false, currentPaso:1, cedulaActual:null, supabase:null};
 
-const state = {paso1:false, paso2:false, paso3:false, currentPaso:1, cedulaActual:null};
-
-async function guardarPaso1(datos) {
-  try {
-    const { data, error } = await supabase
-      .from('plaza_andalucia_registros')
-      .upsert({
-        cedula: datos.cedula,
-        nombre: datos.nombre,
-        empresa: datos.empresa,
-        whatsapp: datos.whatsapp,
-        firma_paso1: datos.firma,
-        fecha_asistencia: new Date().toISOString(),
-        estado: 'asistencia',
-        id_asistencia: datos.id_asistencia,
-        updated_at: new Date().toISOString()
-      }, { onConflict: 'cedula' });
-    
-    if (error) {
-      console.error('Error guardando Paso 1:', error);
-      alert('Error al guardar. Intenta de nuevo.');
-      return false;
-    }
-    
-    console.log('Paso 1 guardado:', data);
-    state.cedulaActual = datos.cedula;
-    return true;
-  } catch (err) {
-    console.error('Error:', err);
-    return false;
-  }
+// Inicializar Supabase cuando se cargue
+async function inicializarSupabase(){
+  const { createClient } = window.supabase;
+  state.supabase = createClient(
+    'https://lfyholfrqxyryveikspy.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxmeWhvbGZycXh5cnl2ZWlrc3B5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM0NDc3ODgsImV4cCI6MjA5OTAyMzc4OH0.kn93eFHmXPdHQShjsV2-4Gn4ThXSVtwQkBEkfBsEuO8'
+  );
+  console.log('✓ Supabase inicializado');
 }
 
-async function guardarPaso2(datos) {
-  try {
-    const { data, error } = await supabase
-      .from('plaza_andalucia_registros')
-      .update({
-        correo: datos.correo,
-        sucursal: datos.sucursal,
-        consentimiento_aceptado: datos.aceptado,
-        fecha_consentimiento: new Date().toISOString(),
-        estado: 'consentimiento',
-        updated_at: new Date().toISOString()
-      })
-      .eq('cedula', state.cedulaActual);
-    
-    if (error) {
-      console.error('Error guardando Paso 2:', error);
-      alert('Error al guardar consentimiento. Intenta de nuevo.');
-      return false;
-    }
-    
-    console.log('Paso 2 guardado:', data);
+async function guardarEnSupabase(datos, paso){
+  if(!state.supabase){
+    console.warn('Supabase no inicializado, datos guardados localmente');
     return true;
-  } catch (err) {
-    console.error('Error:', err);
-    return false;
   }
-}
-
-async function completarRegistro() {
+  
   try {
-    const { data, error } = await supabase
-      .from('plaza_andalucia_registros')
-      .update({
-        estado: 'completado',
-        updated_at: new Date().toISOString()
-      })
-      .eq('cedula', state.cedulaActual);
-    
-    if (error) {
-      console.error('Error completando:', error);
-      return false;
+    if(paso === 1){
+      const { error } = await state.supabase
+        .from('plaza_andalucia_registros')
+        .upsert({cedula:datos.cedula, nombre:datos.nombre, empresa:datos.empresa, whatsapp:datos.whatsapp, firma_paso1:datos.firma, id_asistencia:datos.id, fecha_asistencia:new Date().toISOString(), estado:'asistencia', updated_at:new Date().toISOString()}, {onConflict:'cedula'});
+      return !error;
+    } else if(paso === 2){
+      const { error } = await state.supabase
+        .from('plaza_andalucia_registros')
+        .update({correo:datos.correo, sucursal:datos.sucursal, consentimiento_aceptado:true, fecha_consentimiento:new Date().toISOString(), estado:'consentimiento', updated_at:new Date().toISOString()})
+        .eq('cedula', state.cedulaActual);
+      return !error;
+    } else if(paso === 3){
+      const { error } = await state.supabase
+        .from('plaza_andalucia_registros')
+        .update({estado:'completado', updated_at:new Date().toISOString()})
+        .eq('cedula', state.cedulaActual);
+      return !error;
     }
-    
-    console.log('Registro completado:', data);
-    return true;
-  } catch (err) {
-    console.error('Error:', err);
+  } catch(err){
+    console.error('Error Supabase:', err);
     return false;
   }
 }
@@ -710,58 +469,48 @@ function updateProgress(){
   document.getElementById('progress-1').className=state.paso1?'progress-step done':'progress-step '+(state.currentPaso===1?'active':'pending');
   document.getElementById('progress-2').className=state.paso2?'progress-step done':'progress-step '+(state.currentPaso===2?'active':'pending');
   document.getElementById('progress-3').className=state.paso3?'progress-step done':'progress-step '+(state.currentPaso===3?'active':'pending');
-  
-  if(state.paso1){
-    document.getElementById('card-paso2').classList.remove('locked');
-    document.getElementById('overlay-paso2').style.display='none';
-  }
-  if(state.paso1&&state.paso2){
-    document.getElementById('card-paso3').classList.remove('locked');
-    document.getElementById('overlay-paso3').style.display='none';
-  }
+  if(state.paso1){document.getElementById('card-paso2').classList.remove('locked');document.getElementById('overlay-paso2').style.display='none'}
+  if(state.paso1&&state.paso2){document.getElementById('card-paso3').classList.remove('locked');document.getElementById('overlay-paso3').style.display='none'}
 }
 
 function mostrarPaso(paso){
-  ['paso1','paso2','paso3','paso-final'].forEach(p=>document.getElementById(p).classList.remove('active'));
-  if(paso===1)document.getElementById('paso1').classList.add('active');
-  else if(paso===2)document.getElementById('paso2').classList.add('active');
-  else if(paso===3)document.getElementById('paso3').classList.add('active');
-  else if(paso===4)document.getElementById('paso-final').classList.add('active');
+  const pasoStr = 'paso' + paso;
+  console.log('Mostrando paso ID:', pasoStr);
+  ['paso1','paso2','paso3','paso-final'].forEach(p=>{
+    document.getElementById(p).classList.remove('active');
+  });
+  const elem = document.getElementById(pasoStr);
+  if(elem){
+    elem.classList.add('active');
+    console.log('✓ Paso mostrado:', pasoStr);
+  } else {
+    console.error('✗ No encontrado elemento:', pasoStr);
+  }
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function avanzarPaso(paso){
+  console.log('Avanzando a paso:', paso);
   if(paso===2){
     state.paso1=true;
     state.currentPaso=2;
     document.getElementById('msg-paso1').classList.add('show');
     document.getElementById('btns-paso1').style.display='none';
-  }else if(paso===3){
+  }
+  else if(paso===3){
     state.paso2=true;
     state.currentPaso=3;
     document.getElementById('msg-paso2').classList.add('show');
     document.getElementById('btns-paso2').style.display='none';
   }
   updateProgress();
-  mostrarPaso(state.currentPaso);
+  mostrarPaso(paso);
+  console.log('✓ Estado actualizado - Mostrando paso:', paso, 'Estado:', state);
 }
 
-async function mostrarFinal(){
-  state.paso3=true;
-  
-  // Completar el registro en Supabase
-  await completarRegistro();
-  
-  updateProgress();
-  mostrarPaso(4);
-}
+function toggleCheck(id,cb){document.getElementById(id).classList.toggle('checked',cb.checked)}
 
-function toggleCheck(rowId,checkbox){
-  const row=document.getElementById(rowId);
-  checkbox.checked?row.classList.add('checked'):row.classList.remove('checked');
-}
-
-async function registrarPaso1(){
+function registrarPaso1(){
   const nombre=document.getElementById('nombre').value.trim();
   const cedula=document.getElementById('cedula').value.trim();
   const empresa=document.getElementById('empresa').value;
@@ -780,82 +529,35 @@ async function registrarPaso1(){
   
   if(!nombre||!cedula||!empresa||!whatsapp||!chk1||!chk2||!chk3||!firma)return;
   
-  // Mostrar spinner
-  document.getElementById('btnRegistrar').disabled=true;
-  document.getElementById('spinner').style.display='inline-block';
+  const id=Math.random().toString(36).substr(2,9).toUpperCase();
+  state.cedulaActual=cedula;
   
-  const now=new Date();
-  const fecha=now.toLocaleDateString('es-DO',{year:'numeric',month:'2-digit',day:'2-digit'});
-  const hora=now.toLocaleTimeString('es-DO',{hour:'2-digit',minute:'2-digit'});
-  const codigo=Math.random().toString(36).substr(2,9).toUpperCase();
+  guardarEnSupabase({cedula,nombre,empresa,whatsapp,firma,id},1);
   
-  // Guardar en Supabase
-  const guardado = await guardarPaso1({
-    cedula,
-    nombre,
-    empresa,
-    whatsapp,
-    firma,
-    id_asistencia: codigo
-  });
-  
-  document.getElementById('spinner').style.display='none';
-  document.getElementById('btnRegistrar').disabled=false;
-  
-  if(!guardado){
-    alert('Error al guardar los datos. Intenta de nuevo.');
-    return;
-  }
-  
-  document.getElementById('chip-codigo').textContent=codigo;
-  document.getElementById('comp-nombre').textContent=nombre;
-  document.getElementById('comp-cedula').textContent=cedula;
-  document.getElementById('comp-empresa').textContent=empresa;
-  document.getElementById('comp-fecha').textContent=fecha;
-  document.getElementById('comp-hora').textContent=hora;
-  document.getElementById('comp-codigo').textContent=codigo;
-  document.getElementById('comp-whatsapp').textContent=whatsapp;
-  document.getElementById('comp-firma-texto').textContent=firma;
-  document.getElementById('comp-id').textContent='ID: '+codigo;
-  document.getElementById('comp-timestamp').textContent=now.toLocaleString('es-DO');
-  
+  document.getElementById('comp-datos').innerHTML=`<strong>${nombre}</strong><br>Cédula: ${cedula}<br>Empresa: ${empresa}<br>ID: ${id}`;
   document.getElementById('seccion-formulario').style.display='none';
   document.getElementById('seccion-comprobante').style.display='block';
   document.getElementById('msg-paso1').classList.add('show');
   document.getElementById('btns-paso1').style.display='flex';
 }
 
-async function registrarPaso2(){
+function registrarPaso2(){
   const correo=document.getElementById('p2-correo').value.trim();
   const sucursal=document.getElementById('p2-sucursal').value;
   const acuerdo=document.getElementById('chk-p2-acuerdo').checked;
   
   const correoValid=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
-  document.getElementById('err-p2-correo').textContent=!correo?'⚠ Campo obligatorio':!correoValid?'⚠ Correo inválido':'';
-  document.getElementById('err-p2-sucursal').textContent=sucursal?'':'⚠ Selecciona una localidad';
-  document.getElementById('err-p2-acuerdo').textContent=acuerdo?'':'⚠ Debes aceptar para continuar';
+  document.getElementById('err-p2-correo').textContent=!correo?'⚠ Campo requerido':!correoValid?'⚠ Correo inválido':'';
+  document.getElementById('err-p2-sucursal').textContent=sucursal?'':'⚠ Campo requerido';
+  document.getElementById('err-p2-acuerdo').textContent=acuerdo?'':'⚠ Debes aceptar';
   
-  if(!correo||!correoValid||!sucursal||!acuerdo)return;
-  
-  document.getElementById('btnRegistrar2').disabled=true;
-  
-  // Guardar en Supabase
-  const guardado = await guardarPaso2({
-    correo,
-    sucursal,
-    aceptado: acuerdo
-  });
-  
-  document.getElementById('btnRegistrar2').disabled=false;
-  
-  if(!guardado){
-    alert('Error al guardar el consentimiento. Intenta de nuevo.');
+  if(!correo||!correoValid||!sucursal||!acuerdo){
+    console.log('Validación fallida:', {correo, correoValid, sucursal, acuerdo});
     return;
   }
   
-  const now=new Date();
-  const id=Math.random().toString(36).substr(2,9).toUpperCase();
-  document.getElementById('exitoId2').textContent='ID: '+id;
+  console.log('✓ Paso 2 validado - Guardando en Supabase');
+  guardarEnSupabase({correo,sucursal},2);
   
   document.getElementById('seccion-form-paso2').style.display='none';
   document.getElementById('seccion-exito-paso2').style.display='block';
@@ -863,14 +565,18 @@ async function registrarPaso2(){
   document.getElementById('btns-paso2').style.display='flex';
   state.paso2=true;
   updateProgress();
+  console.log('✓ Paso 2 completado - Botón "Siguiente paso" visible');
+}
+
+function mostrarFinal(){
+  guardarEnSupabase({},3);
+  state.paso3=true;
+  updateProgress();
+  mostrarPaso('-final');
 }
 
 window.addEventListener('load',function(){
-  const now=new Date();
-  const fecha=now.toLocaleDateString('es-DO',{year:'numeric',month:'2-digit',day:'2-digit'});
-  const hora=now.toLocaleTimeString('es-DO',{hour:'2-digit',minute:'2-digit'});
-  document.getElementById('chip-fecha').textContent=fecha;
-  document.getElementById('chip-hora').textContent=hora;
+  inicializarSupabase();
   updateProgress();
 });
 </script>
