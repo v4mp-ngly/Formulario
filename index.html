@@ -396,6 +396,11 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-
       <div style="padding:1.5rem">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSelT4-IfoD6ONzDKpHfkGz_0jz_zv7wUWZ9ktHROfvjEQWHeQ/viewform?embedded=true" width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
       </div>
+      <div class="action-btns" id="btns-paso3-manual" style="margin-top:1rem">
+        <button class="btn btn-primary" onclick="completarPaso3Manual()">
+          ✓ Continuar después de completar el formulario →
+        </button>
+      </div>
     </div>
     <div class="completion-msg" id="msg-paso3">
       ✓ Confirmación completada.
@@ -573,6 +578,23 @@ function mostrarFinal(){
   state.paso3=true;
   updateProgress();
   mostrarPaso('-final');
+}
+
+function completarPaso3(){
+  const confirmacion = document.getElementById('chk-final').checked;
+  
+  if(!confirmacion){
+    document.getElementById('err-final').style.display='block';
+    return;
+  }
+  
+  document.getElementById('err-final').style.display='none';
+  mostrarFinal();
+}
+
+function completarPaso3Manual(){
+  console.log('✓ Paso 3 completado - Mostrando pantalla final');
+  mostrarFinal();
 }
 
 window.addEventListener('load',function(){
