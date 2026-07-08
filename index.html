@@ -480,37 +480,58 @@ function updateProgress(){
 
 function mostrarPaso(paso){
   const pasoStr = 'paso' + paso;
-  console.log('Mostrando paso ID:', pasoStr);
+  console.log('>>> Cambiando a:', pasoStr);
+  
+  // Ocultar todos los pasos
   ['paso1','paso2','paso3','paso-final'].forEach(p=>{
-    document.getElementById(p).classList.remove('active');
+    const elem = document.getElementById(p);
+    if(elem) {
+      elem.classList.remove('active');
+      console.log('  ✓ Ocultado:', p);
+    }
   });
+  
+  // Mostrar el paso solicitado
   const elem = document.getElementById(pasoStr);
   if(elem){
     elem.classList.add('active');
-    console.log('✓ Paso mostrado:', pasoStr);
+    console.log('  ✓ Mostrado:', pasoStr);
   } else {
-    console.error('✗ No encontrado elemento:', pasoStr);
+    console.error('  ❌ ERROR: No encontrado elemento con ID:', pasoStr);
+    return;
   }
+  
   window.scrollTo({top:0,behavior:'smooth'});
+  console.log('✓ Página scrolleada al top\n');
 }
 
 function avanzarPaso(paso){
-  console.log('Avanzando a paso:', paso);
+  console.log('=== AVANZANDO A PASO ' + paso + ' ===');
+  console.log('Estado actual:', state);
+  
   if(paso===2){
     state.paso1=true;
     state.currentPaso=2;
-    document.getElementById('msg-paso1').classList.add('show');
-    document.getElementById('btns-paso1').style.display='none';
+    const msgPaso1 = document.getElementById('msg-paso1');
+    const btnsPaso1 = document.getElementById('btns-paso1');
+    if(msgPaso1) msgPaso1.classList.add('show');
+    if(btnsPaso1) btnsPaso1.style.display='none';
   }
   else if(paso===3){
     state.paso2=true;
     state.currentPaso=3;
-    document.getElementById('msg-paso2').classList.add('show');
-    document.getElementById('btns-paso2').style.display='none';
+    const msgPaso2 = document.getElementById('msg-paso2');
+    const btnsPaso2 = document.getElementById('btns-paso2');
+    if(msgPaso2) msgPaso2.classList.add('show');
+    if(btnsPaso2) btnsPaso2.style.display='none';
   }
+  
+  console.log('✓ Estado actualizado:', state);
   updateProgress();
+  console.log('✓ Progreso actualizado');
+  
   mostrarPaso(paso);
-  console.log('✓ Estado actualizado - Mostrando paso:', paso, 'Estado:', state);
+  console.log('✓ Paso ' + paso + ' mostrado\n');
 }
 
 function toggleCheck(id,cb){document.getElementById(id).classList.toggle('checked',cb.checked)}
@@ -547,9 +568,12 @@ function registrarPaso1(){
 }
 
 function registrarPaso2(){
+  console.log('=== REGISTRANDO PASO 2 ===');
   const correo=document.getElementById('p2-correo').value.trim();
   const sucursal=document.getElementById('p2-sucursal').value;
   const acuerdo=document.getElementById('chk-p2-acuerdo').checked;
+  
+  console.log('Datos capturados:', {correo, sucursal, acuerdo});
   
   const correoValid=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
   document.getElementById('err-p2-correo').textContent=!correo?'⚠ Campo requerido':!correoValid?'⚠ Correo inválido':'';
@@ -557,20 +581,30 @@ function registrarPaso2(){
   document.getElementById('err-p2-acuerdo').textContent=acuerdo?'':'⚠ Debes aceptar';
   
   if(!correo||!correoValid||!sucursal||!acuerdo){
-    console.log('Validación fallida:', {correo, correoValid, sucursal, acuerdo});
+    console.log('❌ Validación fallida:', {correo, correoValid, sucursal, acuerdo});
     return;
   }
   
-  console.log('✓ Paso 2 validado - Guardando en Supabase');
+  console.log('✓ Datos válidos - Guardando en Supabase');
   guardarEnSupabase({correo,sucursal},2);
   
-  document.getElementById('seccion-form-paso2').style.display='none';
-  document.getElementById('seccion-exito-paso2').style.display='block';
-  document.getElementById('msg-paso2').classList.add('show');
-  document.getElementById('btns-paso2').style.display='flex';
+  // Actualizar UI
+  const formSection = document.getElementById('seccion-form-paso2');
+  const exitoSection = document.getElementById('seccion-exito-paso2');
+  const msgPaso2 = document.getElementById('msg-paso2');
+  const btnsPaso2 = document.getElementById('btns-paso2');
+  
+  if(formSection) formSection.style.display='none';
+  if(exitoSection) exitoSection.style.display='block';
+  if(msgPaso2) msgPaso2.classList.add('show');
+  if(btnsPaso2) btnsPaso2.style.display='flex';
+  
   state.paso2=true;
   updateProgress();
-  console.log('✓ Paso 2 completado - Botón "Siguiente paso" visible');
+  
+  console.log('✓ Paso 2 completado');
+  console.log('✓ Estado:', state);
+  console.log('✓ Botón "Siguiente paso →" debe estar visible ahora\n');
 }
 
 function mostrarFinal(){
